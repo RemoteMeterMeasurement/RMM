@@ -18,6 +18,9 @@ class Meter:
 
         consumption = lastDatapoint["consumption"] + ((((lastDatapoint["value"] + meterValue) / 2) * (timestamp - lastDatapoint["timestamp"])) / 3600)
 
+        #Para empezar
+        #consumption = 0
+
         newMeterDatapoint = MeterVO(DBID, meterID, meterValue, consumption, timestamp)
         encodedMeter = Meter._encodeMeter(newMeterDatapoint)
         db.meters.insert_one(encodedMeter)
